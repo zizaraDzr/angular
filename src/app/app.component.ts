@@ -18,38 +18,8 @@ class Item {
   selector: "purchase-app",
   standalone: true,
   imports: [FormsModule, NgFor],
-  template: ` <h1>Список покупок</h1>
-    <div>
-      <p>
-        <label>Товар</label><br />
-        <input [(ngModel)]="text" (ngModelChange)="onTextChange($event)" />
-      </p>
-      <p>
-        <label>Цена</label><br />
-        <input
-          type="number"
-          [(ngModel)]="price"
-          (ngModelChange)="onPriceChange($event)"
-        />
-      </p>
-      <button (click)="addItem(text, price)">Добавить</button>
-    </div>
-    <table>
-      <thead>
-        <tr>
-          <th>Предмет</th>
-          <th>Цена</th>
-          <th>Куплено</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of items; trackBy: trackByPurchase">
-          <td>{{ item.purchase }}</td>
-          <td>{{ item.price }}</td>
-          <td><input type="checkbox" [(ngModel)]="item.done" /></td>
-        </tr>
-      </tbody>
-    </table>`,
+  templateUrl: './app.component.html',
+  styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
   public text: string = "";
