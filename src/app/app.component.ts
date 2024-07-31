@@ -22,8 +22,8 @@ class Item {
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
-  public text: string = "";
-  public price: number = 0;
+  public text: string = "ТЕСТ";
+  public price: number = 10;
 
   items: Item[] = [
     { purchase: "Хлеб", done: false, price: 15.9 },
@@ -35,6 +35,8 @@ export class AppComponent {
   addItem(text: string, price: number): void {
     if (text == null || text.trim() == "" || price == null) return;
     this.items.push(new Item(text, price));
+    this.text = ''
+    this.price= 55
   }
   onTextChange(value: string) {
     console.log("Text ngModel:", value);

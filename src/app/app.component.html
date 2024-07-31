@@ -1,15 +1,28 @@
 <h1>Список покупок</h1>
     <div>
-      <p>
-        <label>Товар</label><br />
-        <input [(ngModel)]="text" (ngModelChange)="onTextChange($event)" />
-      </p>
+      <div [attr.data-long-size-atribute]="text">
+          @if(text === '5'){
+            <p 
+            [style.background-color]="text === '5' ? 'red' : 'green'"
+            style="color: white">
+            Предмет равно {{text}}</p>
+        }
+        @else {
+        <p 
+        [style.background-color]="text != '5' ? 'green' : 'green'"
+            style="color: white"
+        >Предмет не равно пяти, а равно {{text}}</p>
+        }
+        <label>Предмет</label><br />
+        <input [(ngModel)]="text" [value]="text" (ngModelChange)="onTextChange($event)" />
+      </div>
       <p>
         <label>Цена</label><br />
         <input
           type="number"
           [(ngModel)]="price"
           (ngModelChange)="onPriceChange($event)"
+          value="{{price}}"
         />
       </p>
       <button (click)="addItem(text, price)">Добавить</button>
@@ -19,11 +32,12 @@
         <tr>
           <th>Предмет</th>
           <th>Цена</th>
-          <th>Куплено</th>
+          <th >Куплено</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of items; trackBy: trackByPurchase">
+        <tr *ngFor="let item of items; trackBy: trackByPurchase" 
+            [class.redbox]="item.done">
           <td>{{ item.purchase }}</td>
           <td>{{ item.price }}</td>
           <td><input type="checkbox" [(ngModel)]="item.done" /></td>
