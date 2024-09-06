@@ -1,5 +1,6 @@
-import { AuthService } from './../../auth/auth.service';
-import { UserForm } from '../../data/interfaces/form_interface';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth/auth.service';
+import { UserForm } from '../../data/interfaces/auth_interface';
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 
@@ -13,6 +14,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular
 export class LoginPageComponent {
   authService = inject(AuthService);
   userForm: FormGroup<UserForm>;
+  router: Router = inject(Router);
 
   constructor() {
     this.userForm = new FormGroup<UserForm>({
@@ -30,10 +32,18 @@ export class LoginPageComponent {
   }
 
   onSubmit() {
+    // xaVpnaF6ld;
+    // aElizarov1;
     if (this.userForm.valid) {
       const formValue = this.userForm.getRawValue();
-      console.log(formValue);
-
+      this.authService
+        .login({
+          username: formValue.username as string,
+          password: formValue.password as string,
+        })
+        .subscribe((res) => {
+          this.router.navigate([''])
+        });
     }
   }
 }
