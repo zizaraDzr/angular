@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 import { UserForm } from '../../data/interfaces/auth_interface';
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 
 @Component({
@@ -15,6 +15,7 @@ export class LoginPageComponent {
   authService = inject(AuthService);
   userForm: FormGroup<UserForm>;
   router: Router = inject(Router);
+  isPasswordVisible = signal<boolean>(false);
 
   constructor() {
     this.userForm = new FormGroup<UserForm>({
@@ -42,7 +43,7 @@ export class LoginPageComponent {
           password: formValue.password as string,
         })
         .subscribe((res) => {
-          this.router.navigate([''])
+          this.router.navigate(['']);
         });
     }
   }

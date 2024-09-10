@@ -5,3 +5,29 @@
   align-items: center;
   justify-content: center;
 }
+.login-form {
+  width: 440px;
+  // place-self: center;
+}
+.password-input {
+  position: relative;
+}
+
+.password-eye-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 9px;
+  background: none;
+  border: none;
+  color: #FFFFFFBF;
+  cursor: pointer;
+
+ & svg {
+      fill: currentColor;
+    }
+}
+
+.password-eye-btn.active {
+  color: var(--primary-color);
+}
