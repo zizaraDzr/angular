@@ -6,10 +6,14 @@ import { LayoutComponent } from './common-ui/layout/layout.component';
 import { canActivateAuth } from './services/auth/access.guard';
 
 export const routes: Routes = [
-  { path: '', component: LayoutComponent, children: [
-    { path: '', component: SearchPageComponent },
-    { path: 'profile', component: ProfilePageComponent },
-  ],
-    canActivate: [canActivateAuth] },
+  {
+    path: '',
+    component: LayoutComponent,
+    children: [
+      { path: '', component: SearchPageComponent },
+      { path: 'profile', component: ProfilePageComponent },
+    ],
+    canActivate: [canActivateAuth],
+  },
   { path: 'login', component: LoginPageComponent },
 ];

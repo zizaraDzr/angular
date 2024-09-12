@@ -1,1 +1,32 @@
-<p>sidebar works!</p>
+<img
+  class="mb20 ml16"
+  width="50px"
+  height="50px"
+  src="assets/images/img.jpg"
+  alt=""
+/>
+
+<nav>
+  <ul class="main-menu-list">
+    <li *ngFor="let item of menuItems">
+      <button class="menu-item">
+        <svg class="icon-component" [icon]="item.icon"></svg>
+        <span>{{item.label}}</span>
+      </button>
+    </li>
+  </ul>
+</nav>
+
+<p class="medium-text mb20">Подписчики</p>
+
+<pre>{{subscribers$ | async}}</pre>
+
+<!-- <app-subscrider-card></app-subscrider-card> -->
+
+<div class=" mt20 to-subscribers">
+  <a
+  routerLink="login"
+  class="to-subscribers-link medium-text"
+  >Вcе подписчики</a>
+  <svg class="to-subscribers-icon icon-component " [icon]="'tree'"></svg>
+</div>
