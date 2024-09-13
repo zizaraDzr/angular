@@ -1,6 +1,7 @@
 :host {
   display: block;
   padding: 20px 12px;
+  position: relative;
 }
 .main-menu-list {
   display: grid;
@@ -41,9 +42,35 @@
   gap: 10px;
   align-items: center;
 }
+.sidebar__footer {
+  position: absolute;
+  bottom: 20px;
+  border-radius: 2px;
+  padding: 4px 16px;
+  display: grid;
+  grid-template-columns: 32px 1fr 16px;
+  gap: 12px;
+
+  align-items: center;
+
+  & .username-text {
+    color: var(--primary-color);
+    font-weight: 700;
+  }
+  & .icon-component {
+    width: 1em;
+    height: 1em;
+    color: var(--primary-color);
+  }
+}
 .to-subscribers-link {
   color: var(--primary-color);
   text-decoration: none;
+}
+.sidebar__footer-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
 }
 
 
