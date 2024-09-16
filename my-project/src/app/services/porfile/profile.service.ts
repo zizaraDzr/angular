@@ -25,9 +25,17 @@ export class ProfileService {
       .get<Profile>(`${this.baseApiUrl}/account/me`)
       .pipe(tap((res) => this.me.set(res)));
   }
-  getSubscribersShowList() {
+
+  getSubscribersShowList(subAmount: number = 3) {
     return this.http
       .get<PageAble<Profile>>(`${this.baseApiUrl}/account/subscribers/`)
-      .pipe(map((res) => res.items.slice(0, 3)));
+      .pipe(map((res) => res.items.slice(0, subAmount)));
+  }
+
+  patchProfile(profile: Partial<Profile>) {
+       return this.http.patch<Profile[]>(
+         `${this.baseApiUrl}/account/me`,
+         profile
+       );
   }
 }

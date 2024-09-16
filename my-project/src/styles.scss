@@ -99,3 +99,30 @@ body {
   font-size: 14px;
   line-height: 20px;
 }
+.tt-form-label {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+}
+.tt-form-label__text {
+font-size: 17px;
+  line-height: 16px;
+}
+.tt-form-input {
+  font-size: 14px;
+  line-height: 20px;
+  border: none;
+  border-bottom: 1px solid var(--light-color);
+  background: none;
+  color: var(--light-color);
+
+  &:focus-visible {
+    outline: 1px solid var(--primary-color);
+  }
+}
+
+.tt-textarea {
+  height: 84px;
+  resize: none;
+}

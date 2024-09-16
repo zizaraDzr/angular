@@ -7,4 +7,33 @@
     <svg class="to-setting-icon" [icon]="'home'"></svg>
   </a>
 </header>
+
+<main class="profile-page__body">
+  <app-post-feed></app-post-feed>
+  <div>
+    <h3 class="h6 mb16">Подписчики</h3>
+    <div class="subscribers-wrapper mb32">
+      @for(user of subscribers$ | async; track user.id){
+      <a class="subscriber-avatar-btn" [routerLink]="['/profile', user.id]">
+        <img
+          class="subscriber-avatar"
+          [src]="user.avatarUrl | imgUrl"
+          [alt]="user.lastName"
+        />
+      </a>
+      }
+      <a class="to-subscriber-search" [routerLink]="['/search']"> </a>
+    </div>
+
+    <h3 class="h6 mb16">Навыки</h3>
+    <div class="stack-wrapper mb32">
+      @for(skills of ['asd', 'asdad']; track skills){
+      <div class="skill-tag">{{ skills }}</div>
+      }
+    </div>
+    <h3 class="h6 mb16">О себе</h3>
+
+    <!-- <p>{{profile.description}}</p> -->
+  </div>
+</main>
 }
