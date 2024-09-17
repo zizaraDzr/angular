@@ -1,5 +1,5 @@
 import { firstValueFrom } from 'rxjs';
-import { Component, effect, inject } from '@angular/core';
+import { Component, effect, inject, ViewChild } from '@angular/core';
 import { ProfileHeaderComponent } from '../../common-ui/profile-header/profile-header.component';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ProfileService } from '../../services/porfile/profile.service';
@@ -15,6 +15,8 @@ import { AvatarUploadComponent } from "./avatar-upload/avatar-upload.component";
 export class SettingsPageComponent {
   formBuilder = inject(FormBuilder);
   profileService = inject(ProfileService);
+
+  @ViewChild(AvatarUploadComponent) avatarUploader!: AvatarUploadComponent;
 
   form = this.formBuilder.group({
     firstName: ['', Validators.required],
@@ -34,17 +36,25 @@ export class SettingsPageComponent {
       });
     });
   }
+
   onSave() {
     this.form.markAllAsTouched();
     this.form.updateValueAndValidity();
 
     if (this.form.invalid) return;
-    //@ts-ignore
-    firstValueFrom(this.profileService.patchProfile({
-      ...this.form.value,
+    console.log(this.avatarUploader.avatar)
+    if (this.avatarUploader.avatar) {
+      firstValueFrom(
+        this.profileService.uploadAvatar(this.avatarUploader.avatar)
+      );
+    }
       //@ts-ignore
-      stack: this.splitStack(this.form.value.stack),
-    }));
+      firstValueFrom(this.profileService.patchProfile({
+          ...this.form.value,
+          //@ts-ignore
+          stack: this.splitStack(this.form.value.stack),
+        })
+      );
   }
 
   splitStack(stack: string | null | string[] | undefined): string[] {

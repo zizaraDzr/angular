@@ -17,6 +17,10 @@
   padding: 16px;
   display: grid;
   place-content: center;
+
+  &.fileOver {
+  border: 1px solid var(--primary-color);
+  }
 }
 .dropzone-content {
   display: flex;
