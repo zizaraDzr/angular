@@ -1,0 +1,15 @@
+<img
+  class="avatar"
+  width="50px"
+  height="50px"
+  [src]="preview()"
+  alt=""
+/>
+
+<div class="dropzone" tabindex="0" (keyup.enter)="fileDrop.click()">
+  <div class="dropzone-content">
+    <span>Перетащите изображение</span>
+  </div>
+  <input tabindex="-1" type="file" class="avatar-input" #fileDrop
+  (change)="fileBrowserHanler($event)" />
+</div>

@@ -3,11 +3,12 @@ import { Component, effect, inject } from '@angular/core';
 import { ProfileHeaderComponent } from '../../common-ui/profile-header/profile-header.component';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ProfileService } from '../../services/porfile/profile.service';
+import { AvatarUploadComponent } from "./avatar-upload/avatar-upload.component";
 
 @Component({
   selector: 'app-settings-page',
   standalone: true,
-  imports: [ProfileHeaderComponent, ReactiveFormsModule],
+  imports: [ProfileHeaderComponent, ReactiveFormsModule, AvatarUploadComponent],
   templateUrl: './settings-page.component.html',
   styleUrl: './settings-page.component.scss',
 })
@@ -27,7 +28,6 @@ export class SettingsPageComponent {
     effect(() => {
       //@ts-ignore
       this.form.patchValue({
-        //@ts-ignore
         ...this.profileService.me(),
         //@ts-ignore
         stack: this.mergeStack(this.profileService.me()?.stack),
@@ -41,7 +41,6 @@ export class SettingsPageComponent {
     if (this.form.invalid) return;
     //@ts-ignore
     firstValueFrom(this.profileService.patchProfile({
-      //@ts-ignore
       ...this.form.value,
       //@ts-ignore
       stack: this.splitStack(this.form.value.stack),

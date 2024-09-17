@@ -17,20 +17,20 @@ import { ImgUrlPipe } from "../../helpers/pipes/img-url-pipe";
     SubscriderCardComponent,
     AsyncPipe,
     JsonPipe,
-    ImgUrlPipe
-],
+    ImgUrlPipe,
+  ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })
 export class SidebarComponent {
   profileService: ProfileService = inject(ProfileService);
-  me = this.profileService.me
+  me = this.profileService.me;
   subscribers$ = this.profileService.getSubscribersShowList();
   menuItems = [
     {
       label: 'Моя страница',
       icon: 'home',
-      link: '',
+      link: 'profile/me',
     },
     {
       label: 'Чаты',
@@ -40,11 +40,11 @@ export class SidebarComponent {
     {
       label: 'Поиск',
       icon: 'search',
-      link: '',
+      link: 'settings',
     },
   ];
 
   ngOnInit() {
-    firstValueFrom(this.profileService.getMe())
+    firstValueFrom(this.profileService.getMe());
   }
 }
