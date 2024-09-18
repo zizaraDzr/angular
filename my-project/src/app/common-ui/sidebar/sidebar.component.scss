@@ -33,6 +33,10 @@
     width: 1em;
     height: 1em;
   }
+  &.active {
+    background: var(--dark-hover-color);
+    color: var(--primary-color);
+  }
 }
 .icon-component {
   width: 1em;

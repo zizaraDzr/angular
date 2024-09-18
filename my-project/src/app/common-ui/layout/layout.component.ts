@@ -12,10 +12,10 @@ import { ProfileService } from '../../services/porfile/profile.service';
 })
 export class LayoutComponent {
   profileService: ProfileService = inject(ProfileService)
-  ngOnInit() {
-    console.log('onit')
-    this.profileService.getMe().subscribe(val => {
-      console.log(val)
-    })
-  }
+  // ngOnInit() {
+  //   console.log('onit')
+  //   this.profileService.getMe().subscribe(val => {
+  //     console.log(val)
+  //   })
+  // }
 }

@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { SvgIconComponent } from '../svg/svg-icon.component';
 import { NgFor, AsyncPipe, JsonPipe } from '@angular/common';
 import { SubscriderCardComponent } from './subscrider-card/subscrider-card.component';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ProfileService } from '../../services/porfile/profile.service';
 import { firstValueFrom } from 'rxjs';
 import { ImgUrlPipe } from "../../helpers/pipes/img-url-pipe";
@@ -18,6 +18,7 @@ import { ImgUrlPipe } from "../../helpers/pipes/img-url-pipe";
     AsyncPipe,
     JsonPipe,
     ImgUrlPipe,
+    RouterLinkActive,
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
@@ -35,12 +36,12 @@ export class SidebarComponent {
     {
       label: 'Чаты',
       icon: 'tree',
-      link: '',
+      link: 'chats',
     },
     {
       label: 'Поиск',
       icon: 'search',
-      link: 'settings',
+      link: 'search',
     },
   ];
 
